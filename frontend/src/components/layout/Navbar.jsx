@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../actions/authAction';
+import icon from '../../assets/logo.ico'
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -100,7 +101,7 @@ const Navbar = () => {
                 loading ? null : isAuthenticatedUser ? (
                     <nav className="flex justify-between bg-gray-800 md:px-8 py-3 shadow-xl">
                         <Link to={"/"}>
-                            <img src="/src/assets/logo.ico" className="h-12 my-auto" alt="logo" />
+                            <img src={icon} className="h-12 my-auto" alt="logo" />
                         </Link>
                         <div className="flex gap-5">
                             <div className="text-lg font-bold flex gap-3 flex-wrap">
@@ -117,7 +118,7 @@ const Navbar = () => {
                 ) : (
                     <nav className="flex justify-between md:px-5 py-3">
                         <Link to={"/"}>
-                            <img src="/src/assets/logo.ico" className="h-12 my-auto" alt="logo" />
+                            <img src={icon} className="h-12 my-auto" alt="logo" />
                         </Link>
                         <div className="my-auto gap-5">
                             <Link to={"/login"} className="bg-gray-900 text-white px-5 py-2 rounded text-md font-semibold mx-2">Login</Link>
