@@ -36,7 +36,7 @@ import {
   ticketDownloadFail,
 } from "../slices/bookingSlice";
 
-const API_URL = "http://52.207.163.17/:8000";
+const API_URL = "http://127.0.0.1:8000"
 
 // Function to get the token from cookies
 const getToken = () => {

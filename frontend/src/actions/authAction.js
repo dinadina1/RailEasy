@@ -24,7 +24,7 @@ import {
   resetPasswordSuccess,
 } from "../slices/authSlice";
 
-const API_URL = "http://52.207.163.17/:8000";
+const API_URL = "http://127.0.0.1:8000"
 
 // Function to get the token from localStorage
 const getToken = () => {
