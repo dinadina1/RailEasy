@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="src/assets/logo.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RailEasy</title>
+  <style>
+    /* Reduce scrollbar width */
+    ::-webkit-scrollbar {
+      width: 8px;
+      /* Change this value to your desired width */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Customize scrollbar thumb color */
+      border-radius: 4px;
+      /* Optional: to make it rounded */
+    }
+
+    /* Optional: Styling for Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+    }
+  </style>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+
+</html>
