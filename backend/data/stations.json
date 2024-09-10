@@ -1,0 +1,338 @@
+[
+  {
+    "name": "CHENNAI CENTRAL",
+    "station_code": "MAS",
+    "total_platform": "13",
+    "city": "Chennai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "CHENNAI EGMORE",
+    "station_code": "MS",
+    "total_platform": "8",
+    "city": "Chennai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TAMBARAM",
+    "station_code": "TBM",
+    "total_platform": "6",
+    "city": "Chennai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "VELLORE CANTONMENT",
+    "station_code": "VLR",
+    "total_platform": "3",
+    "city": "Vellore",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "SALEM JUNCTION",
+    "station_code": "SA",
+    "total_platform": "5",
+    "city": "Salem",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "MADURAI JUNCTION",
+    "station_code": "MDU",
+    "total_platform": "6",
+    "city": "Madurai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TRICHY JUNCTION",
+    "station_code": "TPJ",
+    "total_platform": "7",
+    "city": "Tiruchirappalli",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "COIMBATORE JUNCTION",
+    "station_code": "CBE",
+    "total_platform": "6",
+    "city": "Coimbatore",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TIRUNELVELI",
+    "station_code": "TEN",
+    "total_platform": "5",
+    "city": "Tirunelveli",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "NAGERCOIL JUNCTION",
+    "station_code": "NCJ",
+    "total_platform": "4",
+    "city": "Nagercoil",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "ERODE JUNCTION",
+    "station_code": "ED",
+    "total_platform": "4",
+    "city": "Erode",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "DINDIGUL JUNCTION",
+    "station_code": "DG",
+    "total_platform": "4",
+    "city": "Dindigul",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KARUR",
+    "station_code": "KRR",
+    "total_platform": "3",
+    "city": "Karur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "ARAKKONAM",
+    "station_code": "AJJ",
+    "total_platform": "4",
+    "city": "Arakkonam",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "VILLUPURAM JUNCTION",
+    "station_code": "VM",
+    "total_platform": "5",
+    "city": "Villupuram",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "THANJAVUR",
+    "station_code": "TJ",
+    "total_platform": "4",
+    "city": "Thanjavur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KUMBAKONAM",
+    "station_code": "KMU",
+    "total_platform": "3",
+    "city": "Kumbakonam",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TIRUPPUR",
+    "station_code": "TUP",
+    "total_platform": "4",
+    "city": "Tiruppur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "THOOTHUKUDI",
+    "station_code": "TUT",
+    "total_platform": "4",
+    "city": "Thoothukudi",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "RAMESWARAM",
+    "station_code": "RMM",
+    "total_platform": "2",
+    "city": "Rameswaram",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "VIRUDHUNAGAR",
+    "station_code": "VPT",
+    "total_platform": "3",
+    "city": "Virudhunagar",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TINDIVANAM",
+    "station_code": "TMV",
+    "total_platform": "3",
+    "city": "Tindivanam",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "MAYILADUTHURAI JUNCTION",
+    "station_code": "MV",
+    "total_platform": "3",
+    "city": "Mayiladuthurai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "CUDDALORE PORT",
+    "station_code": "CUPJ",
+    "total_platform": "2",
+    "city": "Cuddalore",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KATPADI JUNCTION",
+    "station_code": "KPD",
+    "total_platform": "7",
+    "city": "Vellore",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "AVADI",
+    "station_code": "AVD",
+    "total_platform": "3",
+    "city": "Chennai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "AMBATTUR",
+    "station_code": "ABU",
+    "total_platform": "3",
+    "city": "Chennai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TIRUVALLUR",
+    "station_code": "TRL",
+    "total_platform": "4",
+    "city": "Tiruvallur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KANCHIPURAM",
+    "station_code": "CJ",
+    "total_platform": "2",
+    "city": "Kanchipuram",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "CHENGALPATTU",
+    "station_code": "CGL",
+    "total_platform": "4",
+    "city": "Chengalpattu",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "PARANUR",
+    "station_code": "PNR",
+    "total_platform": "1",
+    "city": "Chengalpattu",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TIRUVARUR",
+    "station_code": "TVR",
+    "total_platform": "3",
+    "city": "Tiruvarur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "CHIDAMBARAM",
+    "station_code": "CDM",
+    "total_platform": "2",
+    "city": "Chidambaram",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KOVILPATTI",
+    "station_code": "CVP",
+    "total_platform": "2",
+    "city": "Kovilpatti",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "SATTUR",
+    "station_code": "SRT",
+    "total_platform": "2",
+    "city": "Sattur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "ARUPPUKOTTAI",
+    "station_code": "APK",
+    "total_platform": "2",
+    "city": "Aruppukottai",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "SRIVILLIPUTHUR",
+    "station_code": "SVPR",
+    "total_platform": "2",
+    "city": "Srivilliputhur",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "SIVAKASI",
+    "station_code": "SVKS",
+    "total_platform": "2",
+    "city": "Sivakasi",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "TENKASI",
+    "station_code": "TSI",
+    "total_platform": "3",
+    "city": "Tenkasi",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "KANYAKUMARI",
+    "station_code": "CAPE",
+    "total_platform": "2",
+    "city": "Kanyakumari",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "PUDUCHERRY",
+    "station_code": "PDY",
+    "total_platform": "2",
+    "city": "Puducherry",
+    "state": "Tamilnadu",
+    "country": "India"
+  },
+  {
+    "name": "MANNARGUDI",
+    "station_code": "MQ",
+    "total_platform": "2",
+    "city": "Mannargudi",
+    "state": "Tamilnadu",
+    "country": "India"
+  }
+]
