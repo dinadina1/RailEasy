@@ -27,7 +27,7 @@ import {
   updateTrainSuccess,
 } from "../slices/trainSlice";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "http://52.207.163.17/:8000";
 
 // function to get token
 const getToken = () => {
