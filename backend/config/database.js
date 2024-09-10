@@ -1,16 +1,3 @@
-// // require necessory packages
-// const mongoose = require("mongoose");
-
-// // function to connect to the database
-// const connectDB = async () => {
-//   mongoose.connect(process.env.MONGO_URI).then((con) => {
-//     console.log(`Database connected with the host: ${con.connection.host}`);
-//   });
-// };
-
-// // export function
-// module.exports = connectDB;
-
 // require necessary packages
 const mongoose = require("mongoose");
 const AWS = require("aws-sdk");
@@ -22,11 +9,11 @@ const dotenv = require("dotenv").config({
 // function to get parameter from AWS SSM (only used in production)
 const getParameter = async (parameterName) => {
   const ssm = new AWS.SSM({
-    region: process.env.AWS_REGION || "us-east-1", //  AWS region or set in .env
+    region: process.env.AWS_REGION || "us-east-1", // AWS region or set in .env
   });
 
   const params = {
-    Name: MONGO_URI, // Name of the parameter in AWS SSM
+    Name: parameterName, // Name of the parameter in AWS SSM
     WithDecryption: true, // Decrypt the parameter if encrypted
   };
 
