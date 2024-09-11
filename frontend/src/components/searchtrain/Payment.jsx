@@ -14,7 +14,9 @@ import MetaData from '../layout/MetaData';
 const API_URL = "http://3.84.31.96:8000";
 // Function to get the token from cookies
 const getToken = () => {
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
+  // return token ? token : "";
+  const token = localStorage.getItem("token");
   return token ? token : "";
 };
 

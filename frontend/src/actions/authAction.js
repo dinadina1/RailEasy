@@ -53,7 +53,8 @@ export const loginwithGoogle = (formData) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
     dispatch(googleLoginSuccess(data?.user));
-
+// Reload the page to update the state/UI
+window.location.reload();
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
     //   expires: 2,
@@ -111,7 +112,8 @@ export const loginUser = (formData) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
     dispatch(loginSuccess(data?.user));
-
+// Reload the page to update the state/UI
+window.location.reload();
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
     //   expires: 2,
@@ -145,7 +147,8 @@ export const registerUser = (formData) => async (dispatch) => {
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
     dispatch(registerSuccess(data?.user));
-
+// Reload the page to update the state/UI
+window.location.reload();
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
     //   expires: 2,

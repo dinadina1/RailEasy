@@ -110,6 +110,8 @@ const ReviewJourney = ({ setBgImage }) => {
         } else {
             dispatch(newBooking(formData));
             localStorage.setItem('state', JSON.stringify(["1", "2", "3"]));
+            // Reload the page to update the state/UI
+            window.location.reload();
         }
     }
 
