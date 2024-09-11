@@ -23,7 +23,7 @@ To get started with RailEasy, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-username/raileasy.git
+    git clone https://github.com/dinadina1/RailEasy.git
     ```
 
 2. **Navigate to the Project Directory**:
