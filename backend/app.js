@@ -14,6 +14,8 @@ const cors = require("cors");
 // set .env path
 dotenv.config({ path: path.join(__dirname, "config", "config.env") });
 
+app.set('trust proxy', true);
+
 // parse request body
 app.use(express.json());
 app.use(cookieParser());
