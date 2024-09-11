@@ -52,12 +52,12 @@ export const loginwithGoogle = (formData) => async (dispatch) => {
     // store user and token in cookie
     Cookies.set("user", JSON.stringify(data?.user), {
       expires: 2,
-      secure: true,
+      secure: false,
       sameSite: "None",
     });
     Cookies.set("token", data?.token, {
       expires: 2,
-      secure: true,
+      secure: false,
       sameSite: "None",
     });
   } catch (err) {
@@ -105,13 +105,13 @@ export const loginUser = (formData) => async (dispatch) => {
     // store user and token in cookie
     Cookies.set("user", JSON.stringify(data?.user), {
       expires: 2,
-      secure: true,
-      sameSite: "Lax",
+      secure: false,
+      sameSite: "None",
     });
     Cookies.set("token", data?.token, {
       expires: 2,
-      secure: true,
-      sameSite: "Lax",
+      secure: false,
+      sameSite: "None",
     });
   } catch (err) {
     dispatch(loginFail(err.response?.data?.message));
@@ -136,12 +136,12 @@ export const registerUser = (formData) => async (dispatch) => {
     // store user and token in cookie
     Cookies.set("user", JSON.stringify(data?.user), {
       expires: 2,
-      secure: true,
+      secure: false,
       sameSite: "None",
     });
     Cookies.set("token", data?.token, {
       expires: 2,
-      secure: true,
+      secure: false,
       sameSite: "None",
     });
   } catch (err) {
