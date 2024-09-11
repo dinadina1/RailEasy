@@ -49,10 +49,10 @@ export const loginwithGoogle = (formData) => async (dispatch) => {
       `${API_URL}/api/v1/auth/login/google`,
       formData
     );
-    dispatch(googleLoginSuccess(data?.user));
-
+    
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
+    dispatch(googleLoginSuccess(data?.user));
 
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
@@ -107,10 +107,10 @@ export const loginUser = (formData) => async (dispatch) => {
         },
       }
     );
-    dispatch(loginSuccess(data?.user));
-
+    
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
+    dispatch(loginSuccess(data?.user));
 
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
@@ -141,10 +141,10 @@ export const registerUser = (formData) => async (dispatch) => {
         },
       }
     );
-    dispatch(registerSuccess(data?.user));
-
+    
     localStorage.setItem("user", JSON.stringify(data?.user));
     localStorage.setItem("token", data?.token);
+    dispatch(registerSuccess(data?.user));
 
     // store user and token in cookie
     // Cookies.set("user", JSON.stringify(data?.user), {
