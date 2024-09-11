@@ -7,6 +7,7 @@ import Loader from '../layout/Loader';
 import { clearBookingError } from '../../slices/bookingSlice';
 import MetaData from '../layout/MetaData';
 import AdminSidebar from '../layout/AdminSidebar';
+import success from "../../assets/success.png";
 
 const PaymentSuccess = ({ setBgImage }) => {
 
@@ -46,9 +47,9 @@ const PaymentSuccess = ({ setBgImage }) => {
                         {
                             user?.role === "admin" && <AdminSidebar />
                         }
-                        <div className={user?.role === "admin" ? "container p-2 md:p-5 w-full lg:5/6 mx-auto h-screen overflow-y-auto" : "container p-2 md:p-5 w-full"}>
+                        <div className={user?.role === "admin" ? "container p-2 md:p-5 w-full lg:w-5/6 mx-auto h-screen overflow-y-auto" : "container p-2 md:p-5 w-full"}>
                             <div className="border shadow-xl max-w-lg mx-auto text-center p-5">
-                                <img src="/src/assets/success.png" alt="success" className="h-20 w-20 md:h-28 md:w-28 mx-auto" />
+                                <img src={success} alt="success" className="h-20 w-20 md:h-28 md:w-28 mx-auto" />
                                 <p className="text-2xl md:text-3xl font-bold p-3 text-gray-700">Booking Successful</p>
 
 
