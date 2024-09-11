@@ -87,7 +87,7 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
   let BASE_URL = process.env.FRONTEND_URL;
   if (process.env.NODE_ENV === "production") {
-    BASE_URL = `${req.protocol}://${req.get("host")}`;
+    BASE_URL = `http://3.84.31.96`;
   }
 
   const resetUrl = `${BASE_URL}/password/reset/${resetToken}`;

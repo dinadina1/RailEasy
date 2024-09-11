@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
-import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from "jwt-decode"; // corrected the import
 import { loginUser, loginwithGoogle } from '../../actions/authAction';
 import { useFormik } from 'formik';
 import { toast } from 'react-hot-toast';
 import { clearAuthError } from '../../slices/authSlice';
 import MetaData from '../layout/MetaData';
 
-const googleClientId = "143006967349-qq42vfddc3jns0r558v4r5efqndldts0.apps.googleusercontent.com"
+const googleClientId = "143006967349-qq42vfddc3jns0r558v4r5efqndldts0.apps.googleusercontent.com";
 
 const Login = ({ setBgImage }) => {
 
@@ -22,6 +22,11 @@ const Login = ({ setBgImage }) => {
     setBgImage("bg-[url('/src/assets/train_background.jpg')]");
     const [isPasswordShow, setIsPasswordShow] = useState(false);
     const { error, loading, isAuthenticatedUser } = useSelector(state => state.authState);
+
+    // Function to show example credentials
+    const showExampleCredentials = () => {
+        alert("Example credentials:\n\nEmail: example1@gmail.com\nPassword: examplePass1\n\nEmail: example2@gmail.com\nPassword: examplePass2");
+    }
 
     // function to show password
     const showPassword = () => {
@@ -155,49 +160,39 @@ const Login = ({ setBgImage }) => {
                                 {
                                     formik.errors.password && formik.touched.password ? (
                                         <span className="text-red-500 text-sm flex gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 my-auto">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                strokeWidth="1.5" stroke="currentColor" className="size-4 my-auto">
+                                                <path strokeLinecap="round" strokeLinejoin="round"
+                                                    d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                                             </svg>
                                             <span className='my-auto'>{formik.errors.password}</span>
                                         </span>
                                     ) : null
                                 }
                             </article>
-                            <article className="text-end me-3 ">
-                                <Link to={"/forgotpassword"} className="text-sm text-gray-500  font-semibold hover:underline">Forgot Password</Link>
+                            <Link to={"/password/forgot"} className="text-red-400 font-semibold text-sm float-right mt-2 me-1">Forgot Password ?</Link>
+                            <article className="my-2 w-full">
+                                <button disabled={loading ? true : false} className="w-full rounded bg-primary-blue text-white font-bold text-xl p-2 hover:opacity-80" type="submit">Login</button>
                             </article>
 
-                            <article className="text-center p-2 mt-4">
-                                <button onClick={formik.handleSubmit} type='submit' className="bg-gray-900 text-white px-12 py-2 rounded text-md font-semibold ">
-                                    {
-                                        loading ? (
-                                            <span className="animate-spin inline-block rounded-full h-5 w-5 border-x-2 border-white my-auto"></span>
-                                        ) : <span >LOGIN</span>
-                                    }
-
+                            {/* Example credentials button */}
+                            <article className="my-2 w-full">
+                                <button className="w-full rounded bg-gray-500 text-white font-bold text-md p-2 hover:opacity-80" type="button" onClick={showExampleCredentials}>
+                                    Show Example Credentials
                                 </button>
                             </article>
-                            <div className="flex justify-center items-center">
 
-                            </div>
-
-                            <p className="text-gray-500 font-semibold text-center text-sm my-2">or </p>
-
-                            <article className="flex justify-center p-2 mt-4">
-
+                            <article className="mt-2 p-2 w-full border border-gray-300 flex">
                                 <GoogleLogin
                                     onSuccess={googleLogin}
-                                    onError={(e) => {
-                                        console.log("Login Failed", e);
+                                    onError={() => {
+                                        console.log('Login Failed');
                                     }}
                                     useOneTap
                                 />
-
                             </article>
-
-                            <p className="text-gray-500 font-semibold text-center text-sm my-5">Have not account yet?
-                                <Link to={"/register"} className="text-blue-500 font-semibold text-sm hover:underline"> Register</Link>
-                            </p>
+                            <p className="font-bold text-sm text-center mt-1 text-gray-700">Not have any account yet ?
+                                <Link to={'/signup'} className="text-primary-blue"> Register Now</Link></p>
                         </section>
                     </form>
                 </div>
@@ -206,4 +201,4 @@ const Login = ({ setBgImage }) => {
     )
 }
 
-export default Login
+export default Login;
