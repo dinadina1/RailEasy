@@ -4,13 +4,17 @@ import Cookies from "js-cookie";
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: Cookies.get("user") ? JSON.parse(Cookies.get("user")) : {},
+    // user: Cookies.get("user") ? JSON.parse(Cookies.get("user")) : {},
+    user: localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : {},
     loading: false,
-    isAuthenticatedUser: Cookies.get("token") ? true : false,
+    // isAuthenticatedUser: Cookies.get("token") ? true : false,
+    isAuthenticatedUser: localStorage.getItem("token") ? true : false,
     error: null,
-    users:[],
+    users: [],
     isMailSent: false,
-    isPasswordReseted: false
+    isPasswordReseted: false,
   },
   reducers: {
     googleLoginRequest(state, action) {
@@ -93,20 +97,20 @@ const authSlice = createSlice({
       };
     },
     registerSuccess(state, action) {
-        return {
-            ...state,
-            loading: false,
-            user: action.payload,
-            isAuthenticatedUser: true
-        }
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+        isAuthenticatedUser: true,
+      };
     },
     registerFail(state, action) {
-        return {
-            ...state,
-            loading: false,
-            error: action.payload,
-            isAuthenticatedUser: false
-        }
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        isAuthenticatedUser: false,
+      };
     },
     getUsersRequest(state, action) {
       return {
@@ -210,7 +214,7 @@ export const {
   resetPasswordRequest,
   resetPasswordSuccess,
   clearPasswordReset,
-  clearMailSent
+  clearMailSent,
 } = actions;
 
 export default reducer;

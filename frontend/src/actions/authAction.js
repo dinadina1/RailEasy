@@ -28,16 +28,18 @@ const API_URL = "http://3.84.31.96:8000";
 
 // Function to get the token from localStorage
 const getToken = () => {
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
+  // return token ? token : "";
+  const token = localStorage.getItem("token");
   return token ? token : "";
 };
 
 const config = {
-    withCredentials: true,
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-    },
-  }
+  withCredentials: true,
+  headers: {
+    Authorization: `Bearer ${getToken()}`,
+  },
+};
 
 // Google login user action
 export const loginwithGoogle = (formData) => async (dispatch) => {
@@ -49,17 +51,20 @@ export const loginwithGoogle = (formData) => async (dispatch) => {
     );
     dispatch(googleLoginSuccess(data?.user));
 
+    localStorage.setItem("user", JSON.stringify(data?.user));
+    localStorage.setItem("token", data?.token);
+
     // store user and token in cookie
-    Cookies.set("user", JSON.stringify(data?.user), {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
-    Cookies.set("token", data?.token, {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
+    // Cookies.set("user", JSON.stringify(data?.user), {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
+    // Cookies.set("token", data?.token, {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
   } catch (err) {
     dispatch(googleLoginFail(err.response?.data?.message));
   }
@@ -102,17 +107,20 @@ export const loginUser = (formData) => async (dispatch) => {
     );
     dispatch(loginSuccess(data?.user));
 
+    localStorage.setItem("user", JSON.stringify(data?.user));
+    localStorage.setItem("token", data?.token);
+
     // store user and token in cookie
-    Cookies.set("user", JSON.stringify(data?.user), {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
-    Cookies.set("token", data?.token, {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
+    // Cookies.set("user", JSON.stringify(data?.user), {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
+    // Cookies.set("token", data?.token, {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
   } catch (err) {
     dispatch(loginFail(err.response?.data?.message));
   }
@@ -133,17 +141,20 @@ export const registerUser = (formData) => async (dispatch) => {
     );
     dispatch(registerSuccess(data?.user));
 
+    localStorage.setItem("user", JSON.stringify(data?.user));
+    localStorage.setItem("token", data?.token);
+
     // store user and token in cookie
-    Cookies.set("user", JSON.stringify(data?.user), {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
-    Cookies.set("token", data?.token, {
-      expires: 2,
-      secure: false,
-      sameSite: "None",
-    });
+    // Cookies.set("user", JSON.stringify(data?.user), {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
+    // Cookies.set("token", data?.token, {
+    //   expires: 2,
+    //   secure: false,
+    //   sameSite: "None",
+    // });
   } catch (err) {
     dispatch(registerFail(err.response?.data?.message));
   }
@@ -168,22 +179,30 @@ export const getAllUsers = async (dispatch) => {
 
 // forgot password
 export const forgotPassword = (formData) => async (dispatch) => {
-  try{
+  try {
     dispatch(forgotPasswordRequest());
-    await axios.post(`${API_URL}/api/v1/auth/password/forgot`, formData, config);
+    await axios.post(
+      `${API_URL}/api/v1/auth/password/forgot`,
+      formData,
+      config
+    );
     dispatch(forgotPasswordSuccess());
   } catch (error) {
     dispatch(forgotPasswordFail(error?.response?.data?.message));
   }
-}
+};
 
 // reset password
 export const resetPassword = (formData, token) => async (dispatch) => {
-  try{
+  try {
     dispatch(resetPasswordRequest());
-    await axios.post(`${API_URL}/api/v1/auth/password/reset/${token}`, formData, config);
+    await axios.post(
+      `${API_URL}/api/v1/auth/password/reset/${token}`,
+      formData,
+      config
+    );
     dispatch(resetPasswordSuccess());
   } catch (error) {
     dispatch(resetPasswordFail(error?.response?.data?.message));
   }
-}
+};

@@ -31,7 +31,10 @@ const API_URL = "http://3.84.31.96:8000";
 
 // function to get token
 const getToken = () => {
-  return Cookies.get("token") ? Cookies.get("token") : "";
+  // const token = Cookies.get("token");
+  // return token ? token : "";
+  const token = localStorage.getItem("token");
+  return token ? token : "";
 };
 
 // config
