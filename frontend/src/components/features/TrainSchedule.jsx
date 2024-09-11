@@ -50,7 +50,7 @@ const TrainSchedule = ({ setBgImage }) => {
             {
               user?.role === "admin" && <AdminSidebar />
             }
-            <div className={user?.role === "admin" ? "container p-2 md:p-5 w-full lg:5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
+            <div className={user?.role === "admin" ? "container p-2 md:p-5 w-full lg:w-5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
 
               <section className=" md:p-6">
                 <div className=" w-full bg-blue-950 p-3 text-center mb-3 text-white px-6">

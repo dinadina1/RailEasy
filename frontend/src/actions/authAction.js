@@ -85,8 +85,10 @@ export const logoutUser = async (dispatch) => {
     });
 
     dispatch(logoutSuccess());
-    Cookies.remove("user");
-    Cookies.remove("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    // Cookies.remove("user");
+    // Cookies.remove("token");
   } catch (err) {
     dispatch(logoutFail(err?.response?.data?.message));
   }

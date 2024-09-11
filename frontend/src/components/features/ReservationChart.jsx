@@ -98,7 +98,7 @@ const ReservationChart = ({ setBgImage }) => {
             {
               user?.role === "admin" && <AdminSidebar />
             }
-      <div className={user.role === "admin" ? "container p-2 md:p-5 w-full lg:5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
+      <div className={user.role === "admin" ? "container p-2 md:p-5 w-full lg:w-5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
 
         <div className=" w-full p-3 text-center mb-3 text-white px-7">
           <h2 className="text-xl p-3 font-bold bg-blue-950">Passenger Reservation Chart</h2>

@@ -37,7 +37,7 @@ const Home = ({ setBgImage }) => {
             {
               user?.role === "admin" && <AdminSidebar />
             }
-            <div className={user?.role === "admin" ? "container p-2 md:p-5 w-full lg:5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
+            <div className={user.role === "admin" ? "container p-2 md:p-5 w-full lg:w-5/6 mx-auto" : "container p-2 md:p-5 w-full"}>
               <article className="mt-2 md:mt-4">
                 <h2 className="text-xl md:text-3xl p-2 text-center font-semibold text-white">INDIAN RAILWAYS</h2>
                 <div className="flex gap-4 justify-center my-3">
