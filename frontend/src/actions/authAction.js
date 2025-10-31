@@ -23,8 +23,7 @@ import {
   resetPasswordRequest,
   resetPasswordSuccess,
 } from "../slices/authSlice";
-
-const API_URL = "http://3.84.31.96:8000";
+import { API_URL } from "../constants/api.constants";
 
 // Function to get the token from localStorage
 const getToken = () => {

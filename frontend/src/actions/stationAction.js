@@ -17,8 +17,7 @@ import {
   updateStationRequest,
   updateStationSuccess,
 } from "../slices/stationSlice";
-
-const API_URL = "http://3.84.31.96:8000";
+import { API_URL } from "../constants/api.constants";
 
 // function to get token
 const getToken = () => {

@@ -35,8 +35,7 @@ import {
   ticketDownloadSuccess,
   ticketDownloadFail,
 } from "../slices/bookingSlice";
-
-const API_URL = "http://3.84.31.96:8000";
+import { API_URL } from "../constants/api.constants";
 
 // Function to get the token from cookies
 const getToken = () => {
