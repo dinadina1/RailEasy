@@ -1,29 +1,27 @@
 // backend/config/database.js
 
 const mongoose = require("mongoose");
-const AWS = require("aws-sdk");
 const path = require("path");
 require("dotenv").config({
   path: path.join(__dirname, "config", "config.env"), // adjust if needed
 });
 
-// Configure AWS region
-AWS.config.update({ region: "ap-south-1" });
+// Import AWS SDK v3 SSM client
+const { SSMClient, GetParameterCommand } = require("@aws-sdk/client-ssm");
 
-// Create SSM client
-const ssm = new AWS.SSM();
+// Create SSM client (v3)
+const ssm = new SSMClient({ region: "ap-south-1" });
 
 // Function to get parameter from AWS SSM (used in production)
 const getParameter = async (parameterName) => {
   try {
-    const data = await ssm
-      .getParameter({
-        Name: parameterName, // use '/MONGO_URI' if stored that way
-        WithDecryption: true,
-      })
-      .promise();
+    const command = new GetParameterCommand({
+      Name: parameterName, // use '/MONGO_URI' if your parameter name starts with a slash
+      WithDecryption: true,
+    });
 
-    return data.Parameter.Value;
+    const response = await ssm.send(command);
+    return response.Parameter.Value;
   } catch (error) {
     console.error(`Error retrieving parameter ${parameterName}:`, error);
     throw new Error("Failed to retrieve environment variable from SSM");
@@ -38,7 +36,7 @@ const connectDB = async () => {
     console.log(`🚀 Environment: ${process.env.NODE_ENV}`);
 
     if (process.env.NODE_ENV === "production") {
-      mongoUri = await getParameter("MONGO_URI");
+      mongoUri = await getParameter("MONGO_URI"); // or "/MONGO_URI" if that’s your exact SSM name
     } else {
       mongoUri = process.env.MONGO_URI;
     }
