@@ -85,6 +85,20 @@ const ReviewJourney = ({ setBgImage }) => {
 
     // function to handleSubmit
     const handleSubmit = () => {
+        if (loading) return; // Prevent multiple submissions
+        
+        const existingBookingId = localStorage.getItem('bookingId');
+        if (existingBookingId) {
+            localStorage.setItem('state', JSON.stringify(["1", "2", "3"]));
+            navigate('/ticket/book/payment');
+            return;
+        }
+
+        if (!updatedPassengers || updatedPassengers.length === 0) {
+            toast.error('Please wait for seat allocation to complete');
+            return;
+        }
+
         const formData = {
             train: bookingData.train._id,
             date_of_journey: bookingData.date,
@@ -103,27 +117,19 @@ const ReviewJourney = ({ setBgImage }) => {
             },
         }
 
-        const bookingId = JSON.parse(localStorage.getItem('bookingId'));
-        if (bookingId) {
-            localStorage.setItem('state', JSON.stringify(["1", "2", "3"]));
-            navigate('/ticket/book/payment');
-        } else {
-            dispatch(newBooking(formData));
-            localStorage.setItem('state', JSON.stringify(["1", "2", "3"]));
-            // Reload the page to update the state/UI
-            window.location.reload();
-        }
+        dispatch(newBooking(formData));
     }
 
     useEffect(() => {
-        if (booking._id) {
+        if (booking._id && !localStorage.getItem('bookingId')) {
             localStorage.setItem('bookingId', JSON.stringify(booking._id));
+            localStorage.setItem('state', JSON.stringify(["1", "2", "3"]));
             navigate('/ticket/book/payment');
         }
         if (error) {
             toast.error(error);
         }
-    }, [error, booking._id]);
+    }, [error, booking._id, navigate]);
 
     useEffect(() => {
         const totFare = bookingData?.totalFare + bookingData?.totalFare / 100 * bookingData?.train?.tax_percent
@@ -241,8 +247,10 @@ const ReviewJourney = ({ setBgImage }) => {
                                     <div>
                                         <Link to={"/ticket/book/passengers"}
                                             className="px-6 py-2 border border-gray-500 bg-gray-200 rounded mx-2 font-semibold">Back</Link>
-                                        <button onClick={handleSubmit}
-                                            className="px-6 py-2 border bg-orange-500 text-white rounded font-semibold">Continue</button>
+                                        <button onClick={handleSubmit} disabled={loading}
+                                            className="px-6 py-2 border bg-orange-500 text-white rounded font-semibold disabled:opacity-50">
+                                            {loading ? 'Processing...' : 'Continue'}
+                                        </button>
                                     </div>
                                 </div>
 

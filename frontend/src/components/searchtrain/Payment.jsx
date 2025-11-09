@@ -10,8 +10,8 @@ import Cookies from "js-cookie";
 import AdminSidebar from '../layout/AdminSidebar';
 import Loader from '../layout/Loader';
 import MetaData from '../layout/MetaData';
+import { API_URL } from '../../constants/api.constants';
 
-const API_URL = "http://3.84.31.96:8000";
 // Function to get the token from cookies
 const getToken = () => {
   // const token = Cookies.get("token");
@@ -47,10 +47,12 @@ const Payment = ({ setBgImage }) => {
   const [totalFare, setTotalFare] = useState(0);
   const [updatedPassengers, setUpdatedPassengers] = useState(null);
   const [seats, setSeats] = useState([]);
-  const [bookingId, setBookingId] = useState(JSON.parse(localStorage.getItem("bookingId"))
-    ? JSON.parse(localStorage.getItem("bookingId"))
-    : null);
+  const [bookingId, setBookingId] = useState(() => {
+    const storedBookingId = localStorage.getItem("bookingId");
+    return storedBookingId ? JSON.parse(storedBookingId) : null;
+  });
   const [successLoading, setSuccessLoading] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
 
   // function to get adult count
   const getAdultCount = () => {
@@ -118,7 +120,9 @@ const Payment = ({ setBgImage }) => {
 
   // function to handle payment
   const handlePayment = useCallback(async () => {
-
+    if (paymentLoading || successLoading) return;
+    
+    setPaymentLoading(true);
     try {
       // create razorpay order
       const orderResponse = await axios.post(`${API_URL}/api/v1/booking/payment/order`, {
@@ -127,6 +131,7 @@ const Payment = ({ setBgImage }) => {
       }, config);
 
       if (!orderResponse.data.success) {
+        setPaymentLoading(false);
         return toast.error('Failed to create Razorpay order.');
       }
 
@@ -188,17 +193,20 @@ const Payment = ({ setBgImage }) => {
       // open Razorpay window
       const rzp = new window.Razorpay(options);
       rzp.open();
+      setPaymentLoading(false); // Reset loading when Razorpay opens
 
       // handle payment failure
       rzp.on('payment.failed', (response) => {
+        setPaymentLoading(false);
         toast.error("Payment failed. Please try again.")
       })
     }
     catch (error) {
+      setPaymentLoading(false);
       console.error(error);
       toast.error("An error occurred during payment. Please try again.");
     }
-  })
+  }, [paymentLoading, successLoading, totalFare, bookingId])
 
 
   useEffect(() => {
@@ -216,6 +224,15 @@ const Payment = ({ setBgImage }) => {
       (bookingData?.totalFare / 100) * bookingData?.train?.tax_percent;
     setTotalFare(totFare.toFixed(2));
   }, []);
+
+  // Update booking ID when booking state changes
+  useEffect(() => {
+    if (booking._id && !bookingId) {
+      const newBookingId = booking._id;
+      setBookingId(newBookingId);
+      localStorage.setItem('bookingId', JSON.stringify(newBookingId));
+    }
+  }, [booking._id, bookingId]);
 
   return (
     <>
@@ -378,9 +395,14 @@ const Payment = ({ setBgImage }) => {
                       <p className="font-bold">&#8377; {totalFare}</p>
                     </div>
                     <div className="text-center my-2">
-                      <button onClick={handlePayment} className="px-8 py-2 border bg-orange-500 text-white rounded font-semibold">
-                        {successLoading ? "Please Wait..." : <span>Pay &#8377;
-                          {totalFare} </span>
+                      <button 
+                        onClick={handlePayment} 
+                        disabled={paymentLoading || successLoading || !bookingId}
+                        className="px-8 py-2 border bg-orange-500 text-white rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {paymentLoading ? "Initiating Payment..." : 
+                         successLoading ? "Processing..." : 
+                         <span>Pay &#8377;{totalFare}</span>
                         }
                       </button>
                     </div>

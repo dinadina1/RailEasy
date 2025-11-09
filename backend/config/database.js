@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config({
-  path: path.join(__dirname, "config", "config.env"), // adjust if needed
+  path: path.join(__dirname, "config", "config  .env"), // adjust if needed
 });
 
 // Import AWS SDK v3 SSM client

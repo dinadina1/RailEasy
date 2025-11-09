@@ -158,6 +158,7 @@ exports.createPaymentOrder = catchAsyncError(async (req, res, next) => {
 
   try {
     const response = await razorpay.orders.create(options);
+    console.log('response', response);
 
     res.status(200).json({
       success: true,
@@ -460,8 +461,8 @@ exports.getDailyReport = catchAsyncError(async (req, res, next) => {
         transaction.booking_id.train.train_number +
         " " +
         transaction.booking_id.train.name;
-      trans.user = transaction.booking_id.user.username;
-      trans.email = transaction.booking_id.user.email;
+      trans.user = transaction.booking_id.user?.username || 'N/A';
+      trans.email = transaction.booking_id.user?.email || 'N/A';
       trans.amount = transaction.amount;
       trans.date = transaction.payment_date.toLocaleDateString();
       trans.status = transaction.status;
