@@ -20,10 +20,10 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "http://51.21.198.124:8000",
+      "http://3.80.40.158:8000",
       "http://localhost:8000",
       "http://localhost:5173",
-      "http://51.21.198.124",
+      "http://3.80.40.158",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -40,12 +40,12 @@ app.use("/api/v1/station", station);
 app.use("/api/v1/train", train);
 app.use("/api/v1/booking", booking);
 
-// if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
   });
-// }
+}
 
 app.use(error);
 
